@@ -47,16 +47,11 @@ fn quad_rotors(omega: f64, ground_effect: bool) -> Rotors {
     Rotors(
         layout
             .into_iter()
-            .map(|(name, position, spin)| Rotor {
-                name: name.into(),
-                propeller: prop(),
-                position,
-                axis: Vec3::z(),
-                spin,
-                omega,
-                inplane_drag: 0.0,
-                ground_effect,
-                output: None,
+            .map(|(name, position, spin)| {
+                let mut r = Rotor::new(name, prop(), position, Vec3::z(), spin);
+                r.omega = omega;
+                r.ground_effect = ground_effect;
+                r
             })
             .collect(),
     )

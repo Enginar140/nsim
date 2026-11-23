@@ -14,6 +14,7 @@ nsim-core.workspace = true
 nsim-world.workspace = true
 nsim-atmosphere.workspace = true
 nalgebra = "0.35"
+nsim-powertrain.workspace = true
 
 [dev-dependencies]
 nsim-physics.workspace = true

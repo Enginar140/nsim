@@ -389,6 +389,7 @@ dependencies = [
  "nsim-core",
  "nsim-physics",
  "nsim-physics-rapier",
+ "nsim-powertrain",
  "nsim-world",
 ]
 

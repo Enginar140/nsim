@@ -7,11 +7,11 @@
 //! - [`system`]: [`Rotor`]s mounted on bodies and the [`RotorSystem`] that
 //!   turns them into forces and reaction torques each step.
 //!
-//! Rotor speed is an input (`Rotor::omega`); the electric power train (ESC,
-//! motor, battery) that produces it is a separate model.
+//! Each rotor has a [`Drive`]: speed set directly, a simple first-order motor,
+//! or an electric BLDC motor fed by the body's [`PowerBus`] battery.
 
 pub mod propeller;
 pub mod system;
 
 pub use propeller::{Propeller, PropellerOutput, ground_effect_factor};
-pub use system::{Rotor, RotorSystem, Rotors, Spin};
+pub use system::{Drive, PowerBus, Rotor, RotorSystem, Rotors, Spin};
