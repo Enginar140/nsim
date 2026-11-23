@@ -10,7 +10,7 @@ cargo clippy --workspace --all-targets -- -D warnings
 cargo test --workspace
 ```
 CI runs the same checks on Linux and Windows, plus a build on the minimum supported
-Rust version (1.86).
+Rust version (1.89).
 
 ## Conventions
 - Commit messages: `<type>: <description>` where type is one of

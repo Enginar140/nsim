@@ -106,6 +106,6 @@ trait Sensor: Send {
 
 **Açık konular:**
 1. Görüntüleyici–çekirdek bağlantısı: MVP'de aynı süreç içinde kanal, aşama 6'da Zenoh (öneri).
-2. MSRV / edition: Rust 2024, MSRV 1.86 (öneri).
+2. MSRV / edition: Rust 2024, MSRV 1.89 (nalgebra 0.35 zorunlu kılıyor).
 3. Lisans: MIT + Apache-2.0 (öneri). JSBSim yalnızca dinamik bağlanır.
 4. VDF açık kararları: saklama çerçevesi, açı birimi, katalog reposu, ifade dili (VDF tasarım belgesinin 10. bölümü).
