@@ -215,7 +215,7 @@ dependencies = [
  "hash32 0.2.1",
  "rustc_version",
  "serde",
- "spin",
+ "spin 0.9.9",
  "stable_deref_trait",
 ]
 
@@ -227,6 +227,17 @@ checksum = "0bfb9eb618601c89945a70e254898da93b13be0388091d42117462b265bb3fad"
 dependencies = [
  "hash32 0.3.1",
  "stable_deref_trait",
+]
+
+[[package]]
+name = "hecs"
+version = "0.11.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d7602e3af4f3f6387532d73a4a0f4d1ee2e8ee3c28078ca657126770aa3a9aa4"
+dependencies = [
+ "foldhash",
+ "hashbrown 0.17.2",
+ "spin 0.12.3",
 ]
 
 [[package]]
@@ -334,6 +345,17 @@ dependencies = [
  "nsim-physics",
  "postcard",
  "rapier3d-f64",
+]
+
+[[package]]
+name = "nsim-world"
+version = "0.0.0"
+dependencies = [
+ "hecs",
+ "nalgebra",
+ "nsim-core",
+ "nsim-physics",
+ "nsim-physics-rapier",
 ]
 
 [[package]]
@@ -645,6 +667,12 @@ checksum = "3763264f6b73151db08c50ff20d7d8a0b8796e021cdea7ceedad07b80155fa0e"
 dependencies = [
  "lock_api",
 ]
+
+[[package]]
+name = "spin"
+version = "0.12.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "0134f9043ed38b087ac4f7d4af44c79e2c9e5094421fe3164f435ce585953b10"
 
 [[package]]
 name = "stable_deref_trait"

@@ -1,0 +1,22 @@
+[package]
+name = "nsim-world"
+description = "NSIM world: entities, phased system scheduler and the simulation loop"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+authors.workspace = true
+
+[dependencies]
+nsim-core.workspace = true
+nsim-physics.workspace = true
+hecs = "0.11"
+
+[dev-dependencies]
+nsim-physics-rapier.workspace = true
+nalgebra = "0.35"
+
+[lints]
+workspace = true
