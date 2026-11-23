@@ -19,6 +19,8 @@ Windows ve Linux'ta tek komutla derlenen, **deterministik**, İHA fiziğinde Gaz
 5. **Fiziksel doğruluk testle kanıtlanır.** Her model analitik çözüm, JSBSim veya gerçek uçuş loguyla karşılaştırma testi taşır.
 6. **Tipli konfigürasyon.** SDF/URDF/MJCF yalnızca içe aktarılır; kendi şemamız serde ile tanımlanır.
 7. **f64 her yerde.** Uzun uçuşlar ve büyük alanlar için gerekli.
+8. **Kademeli ayrıntı.** Her fiziksel modelin bir basit modu olur (örn. motor `simple` = maks. devir + gecikme, `electric` = Kv/R/batarya), çünkü herkes ayrıntılı veri yazmak istemez. Ayrıntı ancak veri varsa kullanılır. Varsayılanlar ve tahminler açıkça raporlanır. Model tarafındaki karşılığı VDF tasarımının 10. bölümünde (şablon, katalog, parametrik, tam).
+9. **Deterministik matematik.** Modeller transandantal fonksiyonları `nsim_core::fmath` (libm) üzerinden çağırır, std'den değil.
 
 ## 3. Crate düzeni (Cargo workspace)
 
