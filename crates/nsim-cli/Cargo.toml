@@ -1,0 +1,20 @@
+[package]
+name = "nsim-cli"
+description = "NSIM command-line runner"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+authors.workspace = true
+
+[[bin]]
+name = "nsim"
+path = "src/main.rs"
+
+[dependencies]
+nsim-core.workspace = true
+
+[lints]
+workspace = true
