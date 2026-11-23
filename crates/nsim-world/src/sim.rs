@@ -6,7 +6,7 @@ use hecs::{Entity, World};
 use nsim_core::{SimDuration, SimTime, Wrench};
 use nsim_physics::{BodyDesc, BodyId, PhysicsBackend, PhysicsError};
 
-use crate::components::{Body, ExternalWrench, Name, Pose, Velocity};
+use crate::components::{Body, CenterOfMass, ExternalWrench, Name, Pose, Velocity};
 
 /// Timing information passed to systems.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -174,6 +174,7 @@ impl Sim {
             Body(id),
             Pose(state.pose),
             Velocity(state.twist),
+            CenterOfMass(state.center_of_mass),
             ExternalWrench::default(),
         )))
     }
@@ -245,10 +246,20 @@ impl Sim {
 
         self.physics.step(self.dt)?;
 
-        for (body, pose, vel) in self.world.query_mut::<(&Body, &mut Pose, &mut Velocity)>() {
+        self.refresh_kinematics()?;
+        Ok(())
+    }
+
+    /// Copies pose, velocity and center of mass from physics into components.
+    fn refresh_kinematics(&mut self) -> Result<(), SimError> {
+        for (body, pose, vel, com) in self
+            .world
+            .query_mut::<(&Body, &mut Pose, &mut Velocity, &mut CenterOfMass)>()
+        {
             let state = self.physics.body_state(body.0)?;
             pose.0 = state.pose;
             vel.0 = state.twist;
+            com.0 = state.center_of_mass;
         }
         Ok(())
     }

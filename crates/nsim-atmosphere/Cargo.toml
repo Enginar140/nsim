@@ -11,6 +11,12 @@ authors.workspace = true
 
 [dependencies]
 nsim-core.workspace = true
+nsim-world.workspace = true
+
+[dev-dependencies]
+nsim-physics.workspace = true
+nsim-physics-rapier.workspace = true
+nalgebra = "0.35"
 
 [lints]
 workspace = true

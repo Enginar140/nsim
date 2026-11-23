@@ -20,6 +20,6 @@
 mod components;
 mod sim;
 
-pub use components::{Body, ExternalWrench, Name, Pose, Velocity};
+pub use components::{Body, CenterOfMass, ExternalWrench, Name, Pose, Velocity};
 pub use hecs::{Entity, World};
 pub use sim::{Sim, SimError, Snapshot, StepContext, System};

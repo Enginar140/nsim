@@ -1,6 +1,6 @@
 //! Built-in components.
 
-use nsim_core::{Iso3, Twist, Wrench};
+use nsim_core::{Iso3, Twist, Vec3, Wrench};
 use nsim_physics::BodyId;
 
 /// Human-readable entity name (unique names are not enforced).
@@ -19,6 +19,12 @@ pub struct Pose(pub Iso3);
 /// Written by the physics phase.
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub struct Velocity(pub Twist);
+
+/// Center of mass in world coordinates (ENU). Written by the physics phase.
+/// Force models need it to turn forces applied at a point (a propeller hub,
+/// a wing's aerodynamic center) into a wrench about the center of mass.
+#[derive(Debug, Clone, Copy, PartialEq)]
+pub struct CenterOfMass(pub Vec3);
 
 /// Sum of the forces and torques that force models want applied during the
 /// current step (world frame, at the center of mass). Cleared after each

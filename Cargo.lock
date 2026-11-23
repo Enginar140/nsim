@@ -319,7 +319,11 @@ dependencies = [
 name = "nsim-atmosphere"
 version = "0.0.0"
 dependencies = [
+ "nalgebra",
  "nsim-core",
+ "nsim-physics",
+ "nsim-physics-rapier",
+ "nsim-world",
 ]
 
 [[package]]
