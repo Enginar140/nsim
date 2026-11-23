@@ -225,6 +225,11 @@ impl PhysicsBackend for RapierBackend {
                 &mut self.world.bodies,
             );
         }
+        // Rapier only refreshes world-space mass properties during a step, so
+        // until then `center_of_mass()` reports the origin. Force models that
+        // compute lever arms before the first step need the real value.
+        let w = &mut self.world;
+        w.bodies[handle].recompute_mass_properties_from_colliders(&w.colliders);
         Ok(Self::id_of(handle))
     }
 

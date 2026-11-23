@@ -23,6 +23,7 @@ nsim-core = { path = "crates/nsim-core", version = "0.0.0" }
 nsim-physics = { path = "crates/nsim-physics", version = "0.0.0" }
 nsim-physics-rapier = { path = "crates/nsim-physics-rapier", version = "0.0.0" }
 nsim-world = { path = "crates/nsim-world", version = "0.0.0" }
+nsim-physics-conformance = { path = "crates/nsim-physics-conformance", version = "0.0.0" }
 
 # Optimize dependencies (Rapier, nalgebra) even in dev/test builds: physics
 # tests run ~10x faster, while our own crates stay quick to compile and debug.

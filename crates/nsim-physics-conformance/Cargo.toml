@@ -1,0 +1,18 @@
+[package]
+name = "nsim-physics-conformance"
+description = "Backend-independent behavioural test suite that every NSIM physics backend must pass"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+authors.workspace = true
+
+[dependencies]
+nsim-core.workspace = true
+nsim-physics.workspace = true
+nalgebra = "0.35"
+
+[lints]
+workspace = true
