@@ -1,0 +1,16 @@
+[package]
+name = "nsim-powertrain"
+description = "NSIM electric power train: battery (OCV, R0, RC), ESC, BLDC motor, and a simple first-order motor"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+authors.workspace = true
+
+[dependencies]
+nsim-core.workspace = true
+
+[lints]
+workspace = true

@@ -374,6 +374,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "nsim-powertrain"
+version = "0.0.0"
+dependencies = [
+ "nsim-core",
+]
+
+[[package]]
 name = "nsim-rotor"
 version = "0.0.0"
 dependencies = [
