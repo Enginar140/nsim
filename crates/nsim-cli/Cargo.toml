@@ -13,8 +13,18 @@ authors.workspace = true
 name = "nsim"
 path = "src/main.rs"
 
+[features]
+default = ["rapier"]
+# One feature per physics backend; optional backends (mujoco, physx, jolt)
+# will be added here so users only compile what they need.
+rapier = ["dep:nsim-physics-rapier"]
+
 [dependencies]
 nsim-core.workspace = true
+nsim-physics.workspace = true
+nsim-world.workspace = true
+nsim-physics-rapier = { workspace = true, optional = true }
+nalgebra = "0.35"
 
 [lints]
 workspace = true

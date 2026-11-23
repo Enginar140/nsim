@@ -74,7 +74,14 @@ docs/              inceleme/, plan/, adr/ (mimari karar kayıtları)
 
 Süre tahmini bilinçli olarak yazılmadı. 0–1 tamamlandıktan sonra gerçek hızla kalibre edilecek.
 
-## 6. Kilit arayüzler (taslak)
+## 6. Modülerlik: fizik motorunu değiştirebilmek
+- `Sim` yalnızca `PhysicsBackend` trait'ini bilir. Her motor ayrı bir crate'tir (`nsim-physics-<ad>`) ve CLI'da Cargo feature'ı olarak derlenir. Çalışma anında isimle seçilir: `nsim demo --physics rapier`, ileride dünya dosyasında `physics: mujoco`.
+- Kuvvet modelleri motora dokunmaz, `ExternalWrench` bileşenine yazar. Böylece araç modelleri her motorda aynı kalır.
+- **Uyumluluk test seti** (`nsim-physics-conformance`): 15 analitik kontrol. Her yeni motor `physics_conformance_tests!` makrosuyla bu kontrollerden geçmek zorundadır. Bu set ilk çalıştırmada Rapier arka ucunda gerçek bir hata buldu: ilk adıma kadar kütle merkezi yanlış raporlanıyordu.
+- Motor yeteneği farklıysa (örn. heightmap yok) açık `Unsupported` hatası döner; Gazebo'daki gibi sessizce yok sayılmaz.
+- Sınır: Tek bir dünyada iki motoru karıştırmak desteklenmez; motor seçimi dünya başınadır.
+
+## 7. Kilit arayüzler (taslak)
 ```rust
 // physics
 trait PhysicsBackend: Send {
@@ -96,7 +103,7 @@ trait Sensor: Send {
 }
 ```
 
-## 7. Kararlar ve açık konular
+## 8. Kararlar ve açık konular
 **Verilen kararlar (kullanıcı, 23.11.2026):**
 - **Ad:** NSIM. "OpenSim" Stanford'un biyomekanik simülatörü ve OpenSimulator ile çakıştığı için elendi. crates.io'da `nsim` boş; PyPI'da küçük, ilgisiz bir `nsim` paketi var, Python paketine farklı ad verilecek.
 - **ECS:** `hecs` + kendi fazlı zamanlayıcımız.

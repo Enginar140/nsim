@@ -26,9 +26,9 @@ physics** and **first-class flight-controller integration**, running natively on
   format with importers for URDF, SDF, MJCF and JSBSim.
 
 ## Roadmap (short)
-0. Repository skeleton, CI ← *we are here*
-1. Core: world, scheduler, snapshots, Rapier backend, determinism tests
-2. Flight physics: atmosphere, rotor, power train, fixed-wing aero, validation
+0. Repository skeleton, CI ✓
+1. Core: world, scheduler, snapshots, Rapier backend, determinism tests ✓
+2. Flight physics ← *next*: atmosphere, rotor, power train, fixed-wing aero, validation
 3. Sensors + ArduPilot JSON bridge: ArduCopter and ArduPlane flights
 4. Bevy viewer
 5. VDF scenes, terrain · 6. Zenoh/ROS 2, Python · 7. Camera/lidar · 8. Marine, ground, arms
@@ -36,10 +36,29 @@ physics** and **first-class flight-controller integration**, running natively on
 Detailed plan (Turkish): [`docs/plan/00_yol_haritasi.md`](docs/plan/00_yol_haritasi.md).
 A study of Gazebo's architecture and physics models (Turkish): [`docs/inceleme/`](docs/inceleme/00_OZET.md).
 
+## Try it
+```sh
+cargo run --release -p nsim-cli -- backends          # physics engines compiled in
+cargo run --release -p nsim-cli -- demo --physics rapier
+```
+The demo drops a pile of blocks next to a body held aloft by a force system and prints a
+state hash that is identical on every run and on every operating system.
+
+## Swappable physics
+The simulation loop only knows the `PhysicsBackend` trait. Force models (aerodynamics,
+rotors, hydrodynamics) never call the engine: they write an `ExternalWrench` component,
+so vehicle models work unchanged on any backend. Every backend must pass the shared
+**conformance suite** (`nsim-physics-conformance`, 15 checks against analytic results);
+optional backends are Cargo features and are selected by name at run time.
+
 ## Repository layout
 | Path | Contents |
 |---|---|
-| `crates/nsim-core` | Simulation time and shared foundation types |
+| `crates/nsim-core` | Simulation time, math types, ENU/FLU ↔ NED/FRD frames |
+| `crates/nsim-physics` | Engine-independent physics backend trait |
+| `crates/nsim-physics-rapier` | Default backend (Rapier, f64, cross-platform deterministic) |
+| `crates/nsim-physics-conformance` | Test suite every backend must pass |
+| `crates/nsim-world` | Entities, phased scheduler, simulation loop |
 | `crates/nsim-cli` | `nsim` command-line runner |
 | `docs/` | Plans and research notes |
 

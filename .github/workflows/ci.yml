@@ -29,6 +29,10 @@ jobs:
         run: cargo clippy --workspace --all-targets
       - name: Test
         run: cargo test --workspace
+      - name: Build without optional backends
+        run: cargo clippy -p nsim-cli --no-default-features
+      - name: Demo (prints a state hash that must match across OSes)
+        run: cargo run --release -p nsim-cli -- demo --seconds 5
 
   msrv:
     name: msrv (1.89)
