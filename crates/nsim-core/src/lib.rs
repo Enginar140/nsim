@@ -8,8 +8,10 @@ pub mod fmath;
 pub mod frames;
 pub mod math;
 pub mod rng;
+pub mod table;
 pub mod time;
 
 pub use math::{Iso3, Mat3, Quat, Twist, Vec3, Wrench};
 pub use rng::RngStream;
+pub use table::{Extrapolation, Table1D, Table2D, TableError};
 pub use time::{SimDuration, SimTime};
