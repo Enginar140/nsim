@@ -374,6 +374,18 @@ dependencies = [
 ]
 
 [[package]]
+name = "nsim-rotor"
+version = "0.0.0"
+dependencies = [
+ "nalgebra",
+ "nsim-atmosphere",
+ "nsim-core",
+ "nsim-physics",
+ "nsim-physics-rapier",
+ "nsim-world",
+]
+
+[[package]]
 name = "nsim-world"
 version = "0.0.0"
 dependencies = [

@@ -1,0 +1,24 @@
+[package]
+name = "nsim-rotor"
+description = "NSIM propeller and rotor model: CT/CQ vs advance ratio, ground effect, in-plane drag"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+authors.workspace = true
+
+[dependencies]
+nsim-core.workspace = true
+nsim-world.workspace = true
+nsim-atmosphere.workspace = true
+nalgebra = "0.35"
+
+[dev-dependencies]
+nsim-physics.workspace = true
+nsim-physics-rapier.workspace = true
+nalgebra = "0.35"
+
+[lints]
+workspace = true
