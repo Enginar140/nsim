@@ -1,0 +1,16 @@
+[package]
+name = "nsim-atmosphere"
+description = "NSIM atmosphere: ISA 1976, wind with shear, Dryden turbulence (MIL-F-8785C)"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+authors.workspace = true
+
+[dependencies]
+nsim-core.workspace = true
+
+[lints]
+workspace = true
